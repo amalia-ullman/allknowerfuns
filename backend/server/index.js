@@ -24,6 +24,15 @@ app.get("/getPrices", (req, res) => {
         response.send(error)
     })
 })
+app.get("/usdca", (req, res) => {
+    apiCaller("https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json?recent=1")
+    .then(response => {
+        res.json(response);
+    })
+    .catch(error => {
+        response.send(error)
+    })
+})
 app.listen(PORT, () => {
     console.log(`server listening on...${PORT}`);
 });
