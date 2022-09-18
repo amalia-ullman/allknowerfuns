@@ -16,3 +16,11 @@ h1{
 p{
     font-family: 'Nunito', sans-serif;
 }
+
+.pricecard:hover > .carddetail{
+    opacity: 1;
+}
+
+.pricecard:hover > div > .carddetail{
+    opacity: 0.7;
+}
