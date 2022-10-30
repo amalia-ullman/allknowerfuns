@@ -92,6 +92,9 @@ function Crypto() {
                 </div>
                 <div className="z-10 pt-4 pb-2 opacity-0 carddetail">
                       <span className="inline-block bg-gray-200 rounded-full px-1 py-1 text-sm font-semibold text-gray-700 mr-2">24 hr: {ethprice && !isNaN(ethprice.P) ? ethprice.P : "---"}%</span>
+                      <span className="inline-block bg-gray-200 rounded-full px-1 py-1 text-sm font-semibold text-gray-700 mr-2">Highest Price: {ethprice && !isNaN(ethprice.h) ? ethprice.h : "---"}</span>
+                      <span className="inline-block bg-gray-200 rounded-full px-1 py-1 text-sm font-semibold text-gray-700 mr-2">Lowest Price: {ethprice && !isNaN(ethprice.l) ? ethprice.l : "---"}</span>
+                      
                 </div> 
             </div>
 
@@ -106,6 +109,8 @@ function Crypto() {
                 </div>
                 <div className="z-10 pt-4 pb-2 opacity-0 carddetail">
                       <span className="inline-block bg-gray-200 rounded-full px-1 py-1 text-sm font-semibold text-gray-700 mr-2">24 hr: {btcprice && !isNaN(btcprice.P) ? btcprice.P : "---"}%</span>
+                      <span className="inline-block bg-gray-200 rounded-full px-1 py-1 text-sm font-semibold text-gray-700 mr-2">Highest Price: {btcprice && !isNaN(btcprice.h) ? btcprice.h : "---"}</span>
+                      <span className="inline-block bg-gray-200 rounded-full px-1 py-1 text-sm font-semibold text-gray-700 mr-2">Lowest Price: {btcprice && !isNaN(btcprice.l) ? btcprice.l : "---"}</span>
                 </div> 
             </div>
 
@@ -120,6 +125,8 @@ function Crypto() {
                 </div>
                 <div className="z-10 pt-4 pb-2 opacity-0 carddetail">
                       <span className="inline-block bg-gray-200 rounded-full px-1 py-1 text-sm font-semibold text-gray-700 mr-2">24 hr: {solprice && !isNaN(solprice.P) ? solprice.P : "---"}%</span>
+                      <span className="inline-block bg-gray-200 rounded-full px-1 py-1 text-sm font-semibold text-gray-700 mr-2">Highest Price: {solprice && !isNaN(solprice.h) ? solprice.h : "---"}</span>
+                      <span className="inline-block bg-gray-200 rounded-full px-1 py-1 text-sm font-semibold text-gray-700 mr-2">Lowest Price: {solprice && !isNaN(solprice.l) ? solprice.l : "---"}</span>
                 </div> 
             </div>
 
@@ -134,6 +141,8 @@ function Crypto() {
                 </div>
                 <div className="z-10 pt-4 pb-2 opacity-0 carddetail">
                       <span className="inline-block bg-gray-200 rounded-full px-1 py-1 text-sm font-semibold text-gray-700 mr-2">24 hr: {maticprice && !isNaN(maticprice.P) ? maticprice.P : "---"}%</span>
+                      <span className="inline-block bg-gray-200 rounded-full px-1 py-1 text-sm font-semibold text-gray-700 mr-2">Highest Price: {maticprice && !isNaN(maticprice.h) ? maticprice.h : "---"}</span>
+                      <span className="inline-block bg-gray-200 rounded-full px-1 py-1 text-sm font-semibold text-gray-700 mr-2">Lowest Price: {maticprice && !isNaN(maticprice.l) ? maticprice.l : "---"}</span>
                 </div> 
             </div>
 
@@ -148,6 +157,8 @@ function Crypto() {
                 </div>
                 <div className="z-10 pt-4 pb-2 opacity-0 carddetail">
                       <span className="inline-block bg-gray-200 rounded-full px-1 py-1 text-sm font-semibold text-gray-700 mr-2">24 hr: {adaprice && !isNaN(adaprice.P) ? adaprice.P : "---"}%</span>
+                      <span className="inline-block bg-gray-200 rounded-full px-1 py-1 text-sm font-semibold text-gray-700 mr-2">Highest Price: {adaprice && !isNaN(adaprice.h) ? adaprice.h : "---"}</span>
+                      <span className="inline-block bg-gray-200 rounded-full px-1 py-1 text-sm font-semibold text-gray-700 mr-2">Lowest Price: {adaprice && !isNaN(adaprice.l) ? adaprice.l : "---"}</span>
                 </div> 
             </div>
              </div>
