@@ -6,7 +6,7 @@ import Menu from '../components/Menu';
 import {w3cwebsocket as W3CWebSocket } from "websocket";
 
 const ws = new W3CWebSocket("wss://stream.binance.com:9443/ws");
-/*the comment comment*/
+
 function Crypto() {
     //const [data, setData] = React.useState(null);
     //const [prices, setPrices] = React.useState(null);
