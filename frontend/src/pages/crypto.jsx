@@ -29,6 +29,7 @@ function Crypto() {
         //.then((prices) => console.log(prices.data[0].symbol))
     }) */
     React.useEffect(() => {
+        console.log("the test test");
         fetch("/usdca")
         .then((res) => res.json())
         .then((conversion) => setConversion(conversion.observations[0].FXUSDCAD.v))
