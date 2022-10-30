@@ -30,7 +30,7 @@ function Crypto() {
     }) */
     React.useEffect(() => {
         console.log("the test test");
-        fetch("/usdca")
+        fetch("https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json?recent=1")
         .then((res) => res.json())
         .then((conversion) => setConversion(conversion.observations[0].FXUSDCAD.v))
     },[])
