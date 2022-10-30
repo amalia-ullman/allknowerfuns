@@ -85,10 +85,10 @@ function Crypto() {
                 {/* eth card*/}
                 <div className="h-[200px] bg-transparent max-w-sm relative rounded overflow-hidden shadow-lg m-2 pricecard z-5">
                 <div className="relative z-0"><img className="max-w-sm absolute inset-0 opacity-0 carddetail ease-in duration-[3s] mcqueen" src="../pictures/lightningmcqueen.jpg" alt="Sunset in the mountains"/></div>
-                <div className="z-10 px-6 font-bold text-xl">ETH</div>
-                <div className="z-10 px-6 opacity-0 ease-in duration-[3s] carddetail">
-                <p className="text-slate-100 text-base">
-                    USD ${ethprice && !isNaN(ethprice.c) ? ethprice.c : "---"} | CAD ${ethprice && !isNaN(ethprice.c) ? parseFloat(ethprice.c * conversion).toFixed(4) : "---"}
+                <div className="z-10 px-6 relative font-bold text-xl">ETH</div>
+                <div className="z-10 px-6 relative opacity-0 ease-in duration-[3s] carddetail">
+                    <p className="text-slate-100 text-base">
+                        USD ${ethprice && !isNaN(ethprice.c) ? ethprice.c : "---"} | CAD ${ethprice && !isNaN(ethprice.c) ? parseFloat(ethprice.c * conversion).toFixed(4) : "---"}
                     </p>
                 </div>
                 <div className="z-10 pt-4 pb-2 opacity-0 carddetail">
@@ -102,8 +102,8 @@ function Crypto() {
             {/*bitcard*/}
             <div className="h-[200px] bg-transparent max-w-sm relative rounded overflow-hidden shadow-lg m-2 pricecard z-5">
                 <div className="relative z-0"><img className="max-w-sm absolute inset-0 opacity-0 carddetail ease-in duration-[3s] mcqueen" src="../pictures/lightningmcqueen.jpg" alt="Sunset in the mountains"/></div>
-                <div className="z-10 px-6 font-bold text-xl">BTC</div>
-                <div className="z-10 px-6 opacity-0 ease-in duration-[3s] carddetail">
+                <div className="z-10 px-6 relative font-bold text-xl">BTC</div>
+                <div className="z-10 px-6 relative opacity-0 ease-in duration-[3s] carddetail">
                 <p className="text-slate-100 text-base">
                     USD ${btcprice && !isNaN(btcprice.c) ? btcprice.c : "---"} | CAD ${btcprice && !isNaN(btcprice.c) ? parseFloat(btcprice.c * conversion).toFixed(4) : "---"}
                     </p>
@@ -118,8 +118,8 @@ function Crypto() {
             {/*another card*/}
             <div className="h-[200px] bg-transparent max-w-sm relative rounded overflow-hidden shadow-lg m-2 pricecard z-5">
                 <div className="relative z-0"><img className="max-w-sm absolute inset-0 opacity-0 carddetail ease-in duration-[3s] mcqueen" src="../pictures/lightningmcqueen.jpg" alt="Sunset in the mountains"/></div>
-                <div className="z-10 px-6 font-bold text-xl">SOL</div>
-                <div className="z-10 px-6 opacity-0 ease-in duration-[3s] carddetail">
+                <div className="z-10 px-6 relative font-bold text-xl">SOL</div>
+                <div className="z-10 px-6 relative opacity-0 ease-in duration-[3s] carddetail">
                 <p className="text-slate-100 text-base">
                     USD ${solprice && !isNaN(solprice.c) ? solprice.c : "---"} | CAD ${solprice && !isNaN(solprice.c) ? parseFloat(solprice.c * conversion).toFixed(4) : "---"}
                     </p>
@@ -134,8 +134,8 @@ function Crypto() {
             {/*matic card*/}
             <div className="h-[200px] bg-transparent max-w-sm relative rounded overflow-hidden shadow-lg m-2 pricecard z-5">
                 <div className="relative z-0"><img className="max-w-sm absolute inset-0 opacity-0 carddetail ease-in duration-[3s] mcqueen" src="../pictures/lightningmcqueen.jpg" alt="Sunset in the mountains"/></div>
-                <div className="z-10 px-6 font-bold text-xl">MATIC</div>
-                <div className="z-10 px-6 opacity-0 ease-in duration-[3s] carddetail">
+                <div className="z-10 px-6 relative font-bold text-xl">MATIC</div>
+                <div className="z-10 px-6 relative opacity-0 ease-in duration-[3s] carddetail">
                 <p className="text-slate-100 text-base">
                     USD ${maticprice && !isNaN(maticprice.c) ? maticprice.c : "---"} | CAD ${maticprice && !isNaN(maticprice.c) ? parseFloat(maticprice.c * conversion).toFixed(4) : "---"}
                     </p>
@@ -150,8 +150,8 @@ function Crypto() {
             {/*ada*/}
             <div className="h-[200px] bg-transparent max-w-sm relative rounded overflow-hidden shadow-lg m-2 pricecard z-5">
                 <div className="relative z-0"><img className="max-w-sm absolute inset-0 opacity-0 carddetail ease-in duration-[3s] mcqueen" src="../pictures/lightningmcqueen.jpg" alt="Sunset in the mountains"/></div>
-                <div className="z-10 px-6 font-bold text-xl">ADA</div>
-                <div className="z-10 px-6 opacity-0 ease-in duration-[3s] carddetail">
+                <div className="z-10 px-6 relative font-bold text-xl">ADA</div>
+                <div className="z-10 px-6 relative opacity-0 ease-in duration-[3s] carddetail">
                 <p className="text-slate-100 text-base">
                     USD ${adaprice && !isNaN(adaprice.c) ? adaprice.c : "---"} | CAD ${adaprice && !isNaN(adaprice.c) ? parseFloat(adaprice.c * conversion).toFixed(4) : "---"}
                     </p>
