@@ -5,11 +5,12 @@ import Footer from '../components/Footer';
 import Menu from '../components/Menu';
 import {w3cwebsocket as W3CWebSocket } from "websocket";
 
-const ws = new W3CWebSocket("wss://stream.binance.com:9443/ws");
+//const ws = new W3CWebSocket("wss://stream.binance.com:9443/ws");
 
 function Crypto() {
     //const [data, setData] = React.useState(null);
-    //const [prices, setPrices] = React.useState(null);
+    const [ws, setws] = React.useState(null);
+    const [prices, setPrices] = React.useState(null);
     const [conversion, setConversion] = React.useState(null);
     const [ethprice, setethprice] = React.useState(null);
     const [btcprice, setbtcprice] = React.useState(null);
@@ -21,13 +22,17 @@ function Crypto() {
         fetch("/test")
         .then((res) => res.json())
         .then((data) => setData(data.message))
-    })
+    }) */
     React.useEffect(() => {
-        fetch("/getPrices")
+        setws(new W3CWebSocket("wss://stream.binance.com:9443/ws"));
+        
+    },[])
+    React.useEffect(() => {
+        fetch("https://api.coinlore.net/api/tickers/")
         .then((res) => res.json())
         .then((prices) => setPrices(prices.data))
         //.then((prices) => console.log(prices.data[0].symbol))
-    }) */
+    }) 
     React.useEffect(() => {
         console.log("the test test");
         fetch("https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json?recent=1")
@@ -35,52 +40,51 @@ function Crypto() {
         .then((conversion) => setConversion(conversion.observations[0].FXUSDCAD.v))
     },[])
 
-
-    ws.onopen = () => {
-        console.log("connected");
-        ws.send(`{
-            "method": "SUBSCRIBE",
-            "params": [
-              "ethusdt@ticker",
-              "btcusdt@ticker",
-              "adausdt@ticker",
-              "maticusdt@ticker",
-              "solusdt@ticker"
-            ],
-            "id": 1
-          }`);
+    
+    if (ws) {
+        ws.onopen = () => {
+            console.log("connected");
+            ws.send(`{
+                "method": "SUBSCRIBE",
+                "params": [
+                  "ethusdt@ticker",
+                  "btcusdt@ticker",
+                  "adausdt@ticker",
+                  "maticusdt@ticker",
+                  "solusdt@ticker"
+                ],
+                "id": 1
+              }`);
+        }
+        ws.onmessage = (message) => {
+            let wsdata = JSON.parse(message.data);
+            let symbol = wsdata.s;
+            if(symbol ==="ETHUSDT") {
+                setethprice(wsdata);
+            }
+            if(symbol ==="BTCUSDT") {
+                setbtcprice(wsdata);
+            }
+            if(symbol ==="ADAUSDT") {
+                setadaprice(wsdata);
+            }
+            if(symbol ==="MATICUSDT") {
+                setmaticprice(wsdata);
+            }
+            if(symbol ==="SOLUSDT") {
+                setsolprice(wsdata);
+            }
+            /*{console.log(wsdata)}
+            setethprice(wsdata.c);*/
+            
+        }
     }
-    ws.onmessage = (message) => {
-        let wsdata = JSON.parse(message.data);
-        let symbol = wsdata.s;
-        if(symbol ==="ETHUSDT") {
-            setethprice(wsdata);
-        }
-        if(symbol ==="BTCUSDT") {
-            setbtcprice(wsdata);
-        }
-        if(symbol ==="ADAUSDT") {
-            setadaprice(wsdata);
-        }
-        if(symbol ==="MATICUSDT") {
-            setmaticprice(wsdata);
-        }
-        if(symbol ==="SOLUSDT") {
-            setsolprice(wsdata);
-        }
-        /*{console.log(wsdata)}
-        setethprice(wsdata.c);*/
-        
-    }
+    
     return (
         <div className='bg-white'>
             <Banner />
             <Menu />
-            <p>test ${ethprice && !isNaN(ethprice.c) ? ethprice.c : "---"}</p>
-            <p>
-               {/*} {(!data ? 'loading' : data)}*/}
-                {(!conversion ? 'loadingconversion' : conversion)}
-            </p>
+            
             <div className="flex flex-wrap justify-center bg-cyan-700">
                 {/* eth card*/}
                 <div className="h-[200px] bg-transparent max-w-sm relative rounded overflow-hidden shadow-lg m-2 pricecard z-5">
@@ -163,35 +167,29 @@ function Crypto() {
                 </div> 
             </div>
              </div>
-                {/*{prices &&
+             {/*
+                {prices &&
             <div className="flex flex-wrap justify-center bg-cyan-700">{Object.keys(prices).map((index) => 
                 (
                     <div key={index} className="h-[200px] bg-transparent max-w-sm relative rounded overflow-hidden shadow-lg m-2 pricecard z-5">
                     <div className="relative z-0"><img className="max-w-sm absolute inset-0 opacity-0 carddetail ease-in duration-[3s] mcqueen" src="../pictures/lightningmcqueen.jpg" alt="Sunset in the mountains"/></div>
                     <div className="z-10 px-6 font-bold text-xl">{prices[index].symbol}</div>
                     <div className="z-10 px-6 opacity-0 ease-in duration-[3s] carddetail">
-                        {console.log(prices[index].symbol ==="ETH")}
-                        {(!prices[index].symbol ==="ETH" && <div><p className="text-slate-100 text-base">
-                            USD ${prices[index].price_usd} | CAD ${parseFloat(prices[index].price_usd * conversion).toFixed(4)}
-                            </p></div>)}
-                       {(!prices[index].symbol==="ETH" ? <p className="text-slate-100 text-base">
                             USD ${prices[index].price_usd} | CAD ${parseFloat(prices[index].price_usd * conversion).toFixed(4)}
                             </p> : <p className="text-slate-100 text-base">
                             USD ${(ethprice)} | CAD ${parseFloat(ethprice * conversion).toFixed(4)}
-                </p>)}; 
+                </p>; 
                     </div>
                     <div className="z-10 pt-4 pb-2 opacity-0 carddetail">
                       <span className="inline-block bg-gray-200 rounded-full px-1 py-1 text-sm font-semibold text-gray-700 mr-2">1 hour: {prices[index].percent_change_1h}</span>
                       <span className="inline-block bg-gray-200 rounded-full px-1 py-1 text-sm font-semibold text-gray-700 mr-2">24 hours: {prices[index].percent_change_24h}</span>
                       <span className="inline-block bg-gray-200 rounded-full px-1 py-1 text-sm font-semibold text-gray-700 mr-2">7 sets of 24 hours: {prices[index].percent_change_7d}</span>
                     </div>
-                  </div> 
-                
                   <p key={index}>{prices[index].symbol} | USD: ${prices[index].price_usd} | CAD: ${parseFloat(prices[index].price_usd * conversion).toFixed(4)} | 1 hour: {prices[index].percent_change_1h} |
                     &nbsp;24 hours: {prices[index].percent_change_24h} | 7 sets of 24 hours: {prices[index].percent_change_7d}</p> 
-                </div> 
+            </div> 
                 
-            }*/}
+                */}
             <Footer />
         </div>
     )
